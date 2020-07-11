@@ -13,13 +13,14 @@ Raft implementation library for Java.<br>
 cd raft-java-example && sh deploy.sh <br>
 
 该脚本会在raft-java-example/env目录部署三个实例example1、example2、example3；<br>
-在实例部署过程中，会自动调用每个实例文件夹中的 run_server 启动该实例并开始监听端口、预竞选、选主，然后等待client发送数据。
+在实例部署过程中，会自动调用每个实例文件夹中的 run_server 启动该实例并开始监听端口、预竞选、选主， 然后等待client发送数据。
 
 该脚本同时会创建一个client目录，用于测试raft集群读写功能。<br>
 
 部署成功后，测试写操作，通过如下脚本：
 cd env/client <br>
 ./bin/run_client.sh "list://127.0.0.1:8051,127.0.0.1:8052,127.0.0.1:8053" hello world <br>
+请注意此处 hello 为key， world为value。
 
 测试读操作命令：<br>
 ./bin/run_client.sh "list://127.0.0.1:8051,127.0.0.1:8052,127.0.0.1:8053" hello
